@@ -1,0 +1,5 @@
+# Ignore auto-generated Folium/HTML files in language stats
+*.html linguist-generated=true
+
+# Force Python to be detected as Python
+*.py linguist-language=Python
