@@ -438,7 +438,7 @@ with tabs[3]:
 # --- TAB 5: Predict Signal Strength ---
 with tabs[4]:
     st.header("Predict Signal Strength")
-
+    st.markdown("""Predict signal strength for any location using latitude and longitude. Uses the uploaded dataset or default Australia data.  Best results within your dataset's coverage area.""")
     # Train and store artifacts (only once)
     if "pred_artifacts" not in st.session_state or st.session_state["pred_artifacts"] is None:
         model, feat_list, net_le, defaults = train_regression_model(df)
