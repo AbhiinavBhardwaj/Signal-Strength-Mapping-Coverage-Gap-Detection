@@ -80,9 +80,7 @@ def generate_coverage_map(csv_path, output_html):
     df_map = pd.read_csv(csv_path)
 
     def color_for_signal(signal):
-        if signal == 0:
-            return "black"
-        elif signal == 100:
+        if signal == 100:
             return "green"
         elif signal == 80:
             return "yellow"
@@ -96,8 +94,7 @@ def generate_coverage_map(csv_path, output_html):
     categories = {
         "Green (Excellent)": df_map[df_map["Signal"] == 100],
         "Yellow (Good)": df_map[df_map["Signal"] == 80],
-        "Red (Poor)": df_map[df_map["Signal"] == 50],
-        "Black (No Signal)": df_map[df_map["Signal"] == 0]
+        "Red (Poor)": df_map[df_map["Signal"] == 50]
     }
 
     for name, data in categories.items():
@@ -380,6 +377,12 @@ with tabs[1]:
 # --- TAB 3: Coverage Map ---
 with tabs[2]:
     st.header("Coverage Map")
+    st.markdown("""This tab displays the signal coverage data on an interactive map.  
+                Areas are color-coded based on signal quality:  
+                -Excellent (Green)  
+                -Medium (Yellow)  
+                -Poor (Red)  
+                """)
     map_path = "map.html"
 
     df.to_csv("temp_for_map.csv", index=False)
@@ -393,7 +396,8 @@ with tabs[2]:
 # --- TAB 4: Coverage Gap Detection ---
 with tabs[3]:
     st.header("Coverage Gap Detection")
-
+    st.markdown("""This tab identifies areas with no signal network coverage based on the provided data.  
+                It highlights these gaps on the map, helping you locate regions that need network improvement.”""")
     def generate_coverage_gap_map(current_df):
         # Filter for Poor/No Signal
         gap_df = current_df[current_df['Signal'] == 0]
