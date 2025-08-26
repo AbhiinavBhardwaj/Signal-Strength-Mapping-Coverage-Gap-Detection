@@ -483,7 +483,7 @@ with tabs[4]:
                 color=color,
                 fill=True,
                 fill_color=color,
-                popup=f"Predicted: {pred_value:.2f} dBm ({category})"
+                popup=f"Predicted: {pred_value:.2f}  ({category})"
             ).add_to(m)
 
             st.components.v1.html(m._repr_html_(), height=400)
